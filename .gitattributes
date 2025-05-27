@@ -1,0 +1,4 @@
+data/retrieval_data/*.json filter=lfs diff=lfs merge=lfs -text
+data/retrieval_data/*.pkl filter=lfs diff=lfs merge=lfs -text
+output/deepseek-chat-formalization-0426/new_partial_results.jsonl filter=lfs diff=lfs merge=lfs -text
+output/deepseek-chat-formalization-0426/partial_results.jsonl filter=lfs diff=lfs merge=lfs -text

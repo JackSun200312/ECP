@@ -1,0 +1,16 @@
+I have a difficult high-school competition-level math problem. Your task is to write a Python program to enumerate possible answers to assist in conjecturing and proving the true answer.
+
+Requirements:
+1. The program should print each answer immediately when found (streaming partial results). Prioritize exact values over approximations. Do not hardcode or state the ground-truth answer, and avoid returning True/False unless explicitly required by the problem.
+2. If the problem asks for a minimum or maximum answer, enumerate all candidates up to a threshold, then explicitly output the required extremal answer.
+3. If the problem involves parameters, select small sample values, print the parameters used, and enumerate accordingly.
+4. Ensure the program can be executed by `python enumerator.py` without requiring any input arguments.
+5. Maximize efficiency. Avoid unnecessary computations.
+6. The full output must not exceed 400 tokens.
+7. Only output the Python program. Optionally use comments inside the code for explanations.
+
+Use the following format for the output:
+your explanation
+```python
+your program
+```

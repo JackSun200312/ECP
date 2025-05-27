@@ -1,0 +1,20 @@
+I have a difficult high-school competition-level math problem in Lean, which asks to find a answer set with a mathematical proof.
+Your task is to clearly state the final answer in Lean exprssion and you do not have to derive the whole proof
+I have enumerated the answer(s) via program as a hint for you, and you may look at the pattern in it to help propose the final answer.
+Nevertheless, you should truth your own logic rather than rely on the enumerated answer too much.
+Requirements:
+1. Optionally write your explanations for your conjectured answer, but you do not need to derive a complete proof. 
+2. Your answer expression and explanation together should be at most 100 tokens.
+3. Your final answer should be closed form in Lean and generalized from enumerated answer that can eliminate the existential quantifier
+4. Your answer should be enclosed with delimiter <<< >>> so i can parse it. You should only include the content of proposed answer, and you should not include headers like abbrev <answer_name> : <type> :=.
+5. Your answer must match the type in the local context. 
+Example Input:
+import Mathlib
+
+abbrev putnam_1962_a5_solution : ℕ → ℕ := sorry
+
+theorem putnam_1962_a5
+: ∀ n ≥ 2, putnam_1962_a5_solution n = ∑ k ∈ Finset.Icc 1 n, Nat.choose n k * k^2 :=
+sorry
+Your answer: 
+<<<fun n : ℕ => n * (n + 1) * 2^(n - 2)>>>

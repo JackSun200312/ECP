@@ -1,0 +1,72 @@
+You are given a high-school competition-level math problem that requires constructing an answer, and its candidate Lean 4 formalization (v4.18.0). Unfortunately, this formalization has error 
+and your task is to fix the errors according to the error messages, the retrieved information from documentation and feedback
+Your output must follow this template:
+
+1. Start with:
+   import Mathlib
+
+2. Open relevant namespaces, such as:
+   open Nat Int Real Set
+
+3. Define the answer as an abbreviation, using a lambda expression over the context type:
+   abbrev <problem_name>_answer : α → β := fun x => <expression>
+   Do not include input variable bindings (like `n : ℕ`) before `:` — instead encode those inside the function body.
+   Here, α is the type for context variable, β is the type for answer variable. 
+
+4. Write the formal theorem statement using this template or similar way:
+   theorem <problem_name> (x : α) (hypotheses about x) (y : β): P(x, y) ↔ y = <problem_name>_answer x := by sorry
+
+You may adapt this format for:
+- Optimal answers: If y is minimum answer under context x, replace P(x, y) with P(x, y) ∧ (∀ z, z < y → ¬ P(x, z)). Similarly for maximum answer. You can use IsLeast, IsGreatest, etc.
+- Multiple answers (i.e. answer set): Replace β with Set β, and replace P(x, y) ↔ y = <problem_name>_answer x with P(x, y) ↔ y ∈ <problem_name>_answer x.
+- Degenerated case (no context variables): Replace type of <problem_name>_answer α → β with β, Use P(y) ↔ y = <problem_name>_answer
+- Degenerated case (no uniqueness constraint required): Discard the "iff" constraint (↔ y = <problem_name>_answer x).
+Reminders:
+
+1. In current Lean, most namespaces begin with capital letter (e.g. nat -> Nat), and the lambda calculas use => instead of , (e.g. λ x, f x should become λ x => f x). 
+2. The output should be at most 500 tokens. Do not repeat original problem statement in natural language your lean file.
+3. Leave the proof of the theorem statement by sorry placeholder.
+4. Output your lean code by using delimiter <<<your lean code>>>. 
+
+Example 1:
+
+Problem:
+Given a point $(a,b)$ with $0<b<a$, determine the minimum perimeter of a triangle with one vertex at $(a,b)$, one on the $x$-axis, and one on the line $y=x$.  You may assume that a triangle of minimum perimeter exists.
+
+Answer:
+M(a,b) = $\sqrt{2a² + 2b²}$
+
+Formalization:
+<<<
+import Mathlib
+
+open Set Function Metric
+
+abbrev statement_answer : ℝ → ℝ → ℝ := 
+   fun a b => Real.sqrt (2*a^2 + 2*b^2)
+
+theorem statement
+(a b : ℝ)
+(hab : 0 < b ∧ b < a)
+: sInf {d : ℝ | ∃ (c : ℝ) (x : ℝ), d = Real.sqrt ((a - c)^2 + (b - 0)^2) +  Real.sqrt ((c - x)^2 + (0 - x)^2) + Real.sqrt ((a - x)^2 + (b - x)^2) ∧
+  Real.sqrt ((a - c)^2 + (b - 0)^2) + Real.sqrt ((c - x)^2 + (0 - x)^2) > Real.sqrt ((a - x)^2 + (b - x)^2) ∧
+  Real.sqrt ((a - c)^2 + (b - 0)^2) + Real.sqrt ((a - x)^2 + (b - x)^2) > Real.sqrt ((c - x)^2 + (0 - x)^2) ∧
+  Real.sqrt ((c - x)^2 + (0 - x)^2) + Real.sqrt ((a - x)^2 + (b - x)^2) > Real.sqrt ((a - c)^2 + (b - 0)^2)}
+ = statement_answer a b := by sorry
+>>>
+
+Example 2:
+Problem:
+Find the least positive integer n such that no matter how 10^n is expressed as the product of any two positive integers, at least one of these two integers contains the digit 0.
+Formalization:
+<<<
+import Mathlib
+
+open Nat
+
+abbrev aime_2000_I_1_answer : ℕ := 8
+
+theorem aime_2000_I_1 : 
+  IsLeast {n : ℕ | 0 < n ∧ ∀ (a b : ℕ), a * b = 10^n → (0 ∈ digits 10 a ∨ 0 ∈ digits 10 b)} aime_2000_I_1_answer := by sorry
+>>>
+

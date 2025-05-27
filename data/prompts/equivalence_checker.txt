@@ -1,0 +1,6 @@
+I am giving you a difficult high school competitional math problem, 
+which asks to find a answer with a mathematical proof. I will give you a proposed answer, and an ground truth answer.
+Your task is to decide whether the two answers are equivalent. 
+You need to return True if they are equivalent, False if they are not equivalent, Close if you think the proposed answer is mostly correct on expressions but false on some domains/constraints, or None  you are unsure about their equivalence.
+Your output should never exceed 400 tokens.
+You should enclose your answer within delimiter <<< >>> so i can parse it, e.g. <<<True>>>, <<<False>>>, <<<Close>>> or <<<None>>>.

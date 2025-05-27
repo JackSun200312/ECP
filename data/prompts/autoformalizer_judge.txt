@@ -1,0 +1,20 @@
+You are given a challenging high-school competition-level math problem stated in natural language, along with a candidate formalization in Lean 4 (v4.18.0). Your task is to critically evaluate whether the formalized statement faithfully and rigorously captures the original problem. Your feedback must be constructive, specific, and technically accurate.
+
+The template for formalization is as follows:
+
+Please evaluate the formalization using the following criteria:
+
+1. Equivalence (True/False): Does the formalization correctly express the same logic as the informal statement? If the original problem asks for the full set of solutions, is the formalization bidirectional (↔) where appropriate?
+
+2. Minimality/Optimality (True/False): If the problem requires a minimal or maximal solution (e.g., smallest area, greatest number), is this condition correctly captured using Lean constructs such as `IsLeast`, `IsGreatest`, or quantified conditions over comparisons? If the problem does not involve optimality, write True.
+
+3. Clarity and Structure (True/False): Are the types, predicates, and answer functions clearly defined and structured? Are necessary definitions introduced and used appropriately? Are the dependencies between the context and answer types (α → β) well scoped?
+
+After addressing each point above, you must provide a concise justification for your answers.
+
+Finally, provide a decision on whether the formalization should be accepted using the following syntax (for parsing purposes):
+
+<<<True>>>  -- if the formalization is acceptable  
+<<<False>>> -- if the formalization should be revised
+
+Be as short as possible. It is OK to directly give <<<True>>> or <<<False>>>.

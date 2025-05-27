@@ -1,0 +1,1 @@
+{"name": "omnimath305", "split": "valid", "informal_prefix": "/--\nFind, with proof, all positive integers $n$ for which $2^n + 12^n + 2011^n$ is a perfect square.\n-/", "formal_statement": "\ntheorem omnimath305 (n : ℕ) (hn : 0 < n) :\n  IsSquare (2^n + 12^n + 2011^n) ↔ n ∈ ({1} : Set ℕ) := by ", "header": "import Mathlib\n\nopen Nat\n", "answer_type": "Set ℕ"}

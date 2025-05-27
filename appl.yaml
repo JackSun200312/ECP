@@ -1,0 +1,102 @@
+settings:
+  logging:
+    log_file:
+      enabled: false
+    display:
+      configs: false
+      llm_call_args: false # true
+      llm_response: false # true
+      llm_cache: false
+      llm_cost: true # true
+  tracing:
+    enabled: false
+
+  caching:
+    enabled: true # default to enable the caching
+    folder: "~/.appl/caches" # The folder to store the cache files
+    max_size: 100000  # Maximum number of entries in cache
+    time_to_live: 43200 # Time-to-live in minutes (30 days)
+    cleanup_interval: 1440 # Cleanup interval in minutes (1 day)
+    allow_temp_greater_than_0: true # Whether to cache the generation results with temperature to be greater than 0
+
+# example for setting up servers
+servers:
+  default: gpt-4o # override the default server according to your needs
+
+  local_sglang: # llama2 served using SRT
+    model: default
+    provider: custom
+    base_url: "http://127.0.0.1:30000/v1/" # the example address of the SRT server
+    temperature : 0.1
+
+  local_vllm: # llama2 served using SRT
+    model: /model-weights/DeepSeek-R1-Distill-Qwen-1.5B
+    provider: custom
+    base_url: "http://127.0.0.1:30000/v1/" # the example address of the SRT server
+    temperature : 0.1
+
+
+
+  gpt-4o-mini:
+    model: gpt-4o-mini
+    api_key: 
+    provider: openai
+    temperature: 0.0
+  gpt-4o:
+    model: gpt-4o
+    api_key: 
+    temperature: 0.0
+  o3-mini:
+    model: o3-mini
+    api_key: 
+  o1-mini:
+    model: o1-mini
+    api_key: 
+  gpt-4.1-nano:
+    model: gpt-4.1-nano
+    api_key: 
+  gpt-4.1-mini:
+    model: gpt-4.1-mini
+    api_key: 
+
+  gpt-4o-finetune: 
+    provider: openai
+    model: ft:gpt-4o-2024-08-06:personal::B8KKPHA8
+    api_key: 
+    temperature: 0.0
+    input_cost_per_token: 3.75e-6
+    output_cost_per_token: 1.5e-5
+  gpt-4o-mini-finetune: 
+    provider: openai
+    model: ft:gpt-4o-mini-2024-07-18:personal::B8FWzGhi
+    api_key: 
+    temperature: 0.0
+    input_cost_per_token: 3.0e-7
+    output_cost_per_token: 1.2e-6
+  deepseek-reasoner:
+    model: deepseek/deepseek-reasoner
+    api_key: 
+    temperature: 0.0
+  deepseek-chat:
+    model: deepseek/deepseek-chat
+    api_key: 
+    temperature: 0.0
+
+  DeepSeek-R1-Distill-Qwen-14B:
+    model: default
+    provider: custom
+    base_url: "http://127.0.0.1:30000/v1" # the example address of the SRT server
+    temperature : 0.1
+  qwen-qwq-32b:
+    model: together_ai/Qwen/QwQ-32B
+    # base_url: https://api.together.xyz/v1/
+    # provider: together
+    temperature: 0.0
+  llama:
+    model: together_ai/meta-llama/Llama-3.3-70B-Instruct-Turbo-Free
+    temperature: 0.0
+  # DeepSeek-R1-Distill-Qwen-1.5B:
+  #   model: default
+  #   provider: custom
+  #   base_url: "http://127.0.0.1:30000/v1" # the example address of the SRT server
+  #   temperature : 0.1

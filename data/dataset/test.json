@@ -1,0 +1,19 @@
+[
+    {
+    "name": "omnimath305",
+    "category": "Number Theory",
+    "source": "usajmo",
+    "problem": "Find, with proof, all positive integers $n$ for which $2^n + 12^n + 2011^n$ is a perfect square.",
+    "answer": "\\[ n = 1 \\]",
+    "solution": "The answer is $n=1$ , which is easily verified to be a valid integer $n$ .\nNotice that \\[2^n+12^n+2011^n\\equiv 2^n+7^n \\pmod{12}.\\] Then for $n\\geq 2$ , we have $2^n+7^n\\equiv 3,5 \\pmod{12}$ depending on the parity of $n$ . But perfect squares can only be $0,1,4,9\\pmod{12}$ , contradiction. Therefore, we are done. $\\blacksquare$ ",
+    "is_formalized": "True",
+    "formalization": "import Mathlib\n\nopen Nat\n\nnoncomputable abbrev omnimath305_answer : Set ℕ := {1}\n\ntheorem omnimath305 (n : ℕ) (hn : 0 < n) :\n  IsSquare (2^n + 12^n + 2011^n) ↔ n ∈ omnimath305_answer := by sorry\n",
+    "header": "import Mathlib\n\nopen Nat\n",
+    "formal_answer": "{1}",
+    "answer_type": "Set ℕ",
+    "answer_part": "noncomputable abbrev omnimath305_answer : Set ℕ := sorry",
+    "theorem_part": "theorem omnimath305 (n : ℕ) (hn : 0 < n) :\n  IsSquare (2^n + 12^n + 2011^n) ↔ n ∈ omnimath305_answer := by sorry",
+    "theorem_part_with_answer": "theorem omnimath305 (n : ℕ) (hn : 0 < n) :\n  IsSquare (2^n + 12^n + 2011^n) ↔ n ∈ ({1} : Set ℕ) := by sorry",
+    "theorem_part_without_answer": "theorem omnimath305 : ∃ omnimath305_answer : Set ℕ, ∀ n : ℕ,  0 < n → IsSquare (2 ^ n + 12 ^ n + 2011 ^ n) ↔ n ∈ omnimath305_answer"
+  }
+]

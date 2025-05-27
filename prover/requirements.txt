@@ -1,0 +1,11 @@
+pytz==2022.1
+termcolor==2.4.0
+easydict==1.13
+tabulate==0.9.0
+torch==2.4.0
+torchvision==0.19.0
+numpy==1.26.4
+pandas==1.4.3
+accelerate==0.33.0
+vllm==0.6.3.post1
+vllm_nccl_cu12==2.18.1.0.4.0

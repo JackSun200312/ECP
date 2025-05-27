@@ -1,0 +1,3 @@
+[submodule "prover/mathlib4"]
+	path = prover/mathlib4
+	url = https://github.com/xinhjBrant/mathlib4.git
