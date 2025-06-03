@@ -252,5 +252,7 @@ If you find this work useful, please cite:
 
 
 ## Acknowledgement
-
-This paper was developed using code from [Goedel-Prover](https://github.com/Goedel-LM/Goedel-Prover) for proof generation utilities.
+The prover part of this repository use code from [Goedel-Prover](https://github.com/Goedel-LM/Goedel-Prover). Some of raw problems from the following datasets were included in ConstructiveBench, as mentioned in the paper:
+- [Omni-MATH](https://omni-math.github.io/)
+- [OlympiadBench](https://github.com/OpenBMB/OlympiadBench)
+- [MathOdyssey](https://github.com/protagolabs/odyssey-math)
