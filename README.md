@@ -8,9 +8,11 @@
   <a href="https://github.com/JackSun200312/ECP" target="_blank"><img src="https://img.shields.io/badge/GitHub-Code-4A90E2?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
 </p>
 
-## Key Contributions
-- **Introduce the ECP framework**: a modular neuro-symbolic pipeline that integrates a feedback-driven autoformalization stage, LLM-based enumeration and conjecturing, and theorem proving in Lean.
-- **Introduce ConstructiveBench dataset**: an autoformalized dataset of 3,431 competition-grade answer-construction problems, each includes informal and formal problem statements, ground-truth answers and metadata, enabling end-to-end formal verification (answer-construction + proving).
+## Summary
+- **Background**: We identify that current mathematical reasoning approaches either generate creative answers (LLMs) but fail to verify them formally, or verify rigorously (symbolic provers) but cannot efficiently generate answers.
+- **Contribution**: 
+  - We introduce **ECP framework**: a modular neuro-symbolic pipeline that integrates a feedback-driven autoformalization stage, LLM-based enumeration and conjecturing, and theorem-proving in Lean.
+  - We introduce **ConstructiveBench**: an autoformalized dataset of 3,431 competition-grade answer-construction problems, each includes informal and formal problem statements, ground-truth answers and metadata, enabling end-to-end formal verification (answer-construction + theorem-proving).
 
 ![ECP Framework Diagram](assets/ecp.png)
 
@@ -47,9 +49,9 @@ Below, we show the problem sources and problem domains in ConstructiveBench.
 - **Description**: A selected subset of answer-construction problems from the PutnamBench dataset, chosen to evaluate the ECP pipeline on university-level problems.
 
 
-## Experiment Summary
+## Experiment Overview
 
-We show the end-to-end answer construction ("Conjecturer Model") and theorem proving ("Prover Model") accuracy with Pass@32 metric on 3,431 ConstructiveBench problems, comparing the CoT baseline vs. ECP for answer construction. 
+We show the end-to-end answer-construction ("Conjecturer Model") and theorem proving ("Prover Model") accuracy with Pass@32 metric on 3,431 ConstructiveBench problems, comparing the CoT baseline vs. ECP for answer-construction. 
 ![ECP Framework Diagram](assets/experiment.png)
 
 ## Requirement
@@ -196,7 +198,7 @@ python src/ecp/main.py     --mode answer_gen     --problem_path constructivebenc
 
 #### C. Run Proof-Generation (Prove)
 
-> After generating formalizations and conjectures (via `answer_gen`), run:
+After generating formalizations and conjectures (via `answer_gen`), run:
 
 ```bash
 python src/ecp/main.py     --mode proof_gen     --problem_path constructivebench
