@@ -125,22 +125,22 @@ We show the end-to-end answer-construction ("Conjecturer Model") and theorem pro
 
 ```
 ECP/
-├── prover/                         # Adapted from Goedel-Prover, contains utilities for running prover models
+├── prover/     # Adapted from Goedel-Prover, contains utilities for running prover models
 ├── src/
 │   └── ecp/
-│       ├── agent.py                # Multi-agent framework for Enumerate → Conjecture → Prove (ECP)
-│       ├── main.py                 # Main entry point for experiments
-│       └── utils.py                # Utility functions
+│   ├── agent.py    # Multi-agent framework for Enumerate → Conjecture → Prove (ECP)
+│   ├── main.py     # Main entry point for experiments
+│   └── utils.py    # Utility functions
 │   └── scripts/
-│       ├── dataset/
-│       ├── deploy/
-│       ├── finetune/
-│       ├── lean/
-│       └── trace/
+│   ├── dataset/
+│   ├── deploy/
+│   ├── finetune/
+│   ├── lean/
+│   └── trace/
 └── data/
     └── dataset/
-        ├── constructivebench.json  # ConstructiveBench dataset
-        └── putnam.json             # PutnamBench answer-construction subset
+    ├── constructivebench.json  # ConstructiveBench dataset
+    └── putnam.json     # PutnamBench answer-construction subset
 ```
 
 
@@ -184,13 +184,13 @@ The file `src/ecp/main.py` provides a unified interface for three pipelines:
 #### A. Run Autoformalization
 
 ```bash
-python src/ecp/main.py     --mode autoformalize     --problem_path constructivebench
+python src/ecp/main.py --mode autoformalize --problem_path constructivebench
 ```
 
-#### B. Run Answer-Generation (ECP Pipeline)
+#### B. Run Answer-Generation (Enumerate-Conjecture)
 
 ```bash
-python src/ecp/main.py     --mode answer_gen     --problem_path constructivebench     --enable_enumerator true
+python src/ecp/main.py --mode answer_gen --problem_path constructivebench --enable_enumerator true
 ```
 > **Output Location**:  
 > `output/data/dataset/constructivebench.json/deepseek-chat-code/`  
@@ -201,7 +201,7 @@ python src/ecp/main.py     --mode answer_gen     --problem_path constructivebenc
 After generating formalizations and conjectures (via `answer_gen`), run:
 
 ```bash
-python src/ecp/main.py     --mode proof_gen     --problem_path constructivebench
+python src/ecp/main.py --mode proof_gen --problem_path constructivebench
 ```
 > **Note**: Proof generation uses Goedel-Prover by default. You can override with models like `deepseek-ai/DeepSeek-Prover-V2-7B` or `AI-MO/Kimina-Prover-Preview-Distill-7B`.
 
@@ -239,13 +239,13 @@ If you find this work useful, please cite:
 
 ```bibtex
 @misc{sun2025enumerateconjectureproveformallysolvinganswerconstruction,
-  title        = {Enumerate-Conjecture-Prove: Formally Solving Answer-Construction Problems in Math Competitions},
-  author       = {Jialiang Sun and Yuzhi Tang and Ao Li and Chris J. Maddison and Kuldeep S. Meel},
-  year         = {2025},
-  eprint       = {2505.18492},
+  title    = {Enumerate-Conjecture-Prove: Formally Solving Answer-Construction Problems in Math Competitions},
+  author   = {Jialiang Sun and Yuzhi Tang and Ao Li and Chris J. Maddison and Kuldeep S. Meel},
+  year     = {2025},
+  eprint   = {2505.18492},
   archivePrefix= {arXiv},
   primaryClass = {cs.AI},
-  url          = {https://arxiv.org/abs/2505.18492},
+  url  = {https://arxiv.org/abs/2505.18492},
 }
 ```
 
